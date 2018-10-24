@@ -2,54 +2,35 @@ import React, {Component} from 'react';
 import {
   FlatList,
   View,
+  TouchableOpacity,
   Image,
   Text,
 } from 'react-native';
-import styles from '../../screen/List/BoardList.style'
+import styles from '../../screen/List/BoardList.style';
+import {dataDummy} from './Constants.FlatListCell';
 
 class FlatListCell extends Component{
   constructor(props){
     super(props);
-    this.state ={
-      listDummy: [
-        {
-          id:1,
-          title: "ABC lima dasar",
-          desc: "Permainan jaman bahela",
-          image:require("../../images/abclimadasar.png")
-        },
-        {
-          id: 2,
-          title: "Hompimpa alaium gambreng",
-          desc:"Ketika membutuhkan decision siapa yang jaga",
-          image: require("../../images/hompimpa.png")
-        },
-        {
-          id: 3,
-          title: "Suit",
-          desc:"Ketika menentukan siapa yang duluan jalan",
-          image: require("../../images/suit.png")
-        }
-      ]
-    }
+   
   }
-  _keyExtractor = (item, index) => index;
+  _keyExtractor = (item, index) => index.toString();
   _renderItem = ({item, index}) =>{
     console.log(item);
     return(
-      <View style={styles.containerCell}>
+      <TouchableOpacity style={styles.containerCell}>
         <Image style={styles.image} source={item.image}/>
         <View style={styles.containerText}>
           <Text>{item.title}</Text>
           <Text>{item.desc}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
   render(){
     return(
       <FlatList
-        data={this.state.listDummy}
+        data={dataDummy.listDummy}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
       />

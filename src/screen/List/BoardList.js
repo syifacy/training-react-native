@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {
   View,
+  ScrollView,
   ActivityIndicator,
   TouchableOpacity,
   Text,
@@ -18,7 +19,6 @@ class BoardList extends Component {
   _onPress = () =>{
     this.props.loadingNow();
     setTimeout(()=>{
-      console.log("Timeout")
         this.props.loadList();
     }, 1000)
   }
@@ -26,12 +26,12 @@ class BoardList extends Component {
   render(){
     const {loadSuccess, isLoading} = this.props;
       return(
-        <View>
+        <ScrollView>
           <TouchableOpacity
             style={styles.buttonBoard}
             onPress={this._onPress}
           >
-           <Text> GET DATA</Text>
+           <Text style={{color:'#FFFFFF'}}>GET DATA</Text>
           </TouchableOpacity>
         {
           isLoading ?
@@ -40,13 +40,13 @@ class BoardList extends Component {
           </View>
           :
           loadSuccess?
-          <View>
+          <View style={styles.containerFlatList}>
             <FlatListCell />
           </View>
           :
           <View><Text></Text></View>
         }
-        </View>
+      </ScrollView>
     )
   }
 }

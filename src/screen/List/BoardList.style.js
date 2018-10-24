@@ -51,7 +51,11 @@ const styles = StyleSheet.create({
     flexWrap:'wrap',
     alignItems: 'flex-start',
     marginLeft: 10
+  },
+  containerFlatList:{
+    marginLeft: 10
   }
+  
 });
 
 export default styles;
