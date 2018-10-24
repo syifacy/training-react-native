@@ -1,0 +1,13 @@
+{
+    "extends": [
+        "airbnb",
+        "plugin:react-native/all"
+    ],
+    "plugins": [
+        "react",
+        "react-native"
+    ],
+    "rules": {
+        "no-console": ["off"]
+    }
+}
