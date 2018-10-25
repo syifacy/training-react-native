@@ -11,7 +11,8 @@
     "react": "16.5.0",
     "react-native": "0.57.0",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
@@ -23,7 +24,8 @@
     "eslint-plugin-react-native": "^3.4.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.0",
-    "react-test-renderer": "16.5.0"
+    "react-test-renderer": "16.5.0",
+    "remote-redux-devtools": "^0.5.13"
   },
   "jest": {
     "preset": "react-native"
