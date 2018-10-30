@@ -6,10 +6,12 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Text,
+  TextInput
 } from 'react-native';
 import FlatListCell from '../../components/FlatList/FlatListCell';
 import styles from './BoardList.style';
 import {loadList, loadingNow} from '../../actions/ListBoardAction';
+import {fetchNews} from '../../actions/NewsAction';
 
 class BoardList extends Component {
   constructor(props){
@@ -17,21 +19,26 @@ class BoardList extends Component {
   }
   
   _onPress = () =>{
-    this.props.loadingNow();
-    setTimeout(()=>{
-        this.props.loadList();
-    }, 1000)
+    this.props.fetchNews();
+  }
+  _onChange = (value) =>{
+    console.log("change", value)
   }
   
   render(){
-    const {loadSuccess, isLoading} = this.props;
+    const {news, isLoading} = this.props;
       return(
         <ScrollView>
+          <TextInput
+              onChangeText={this._onChange}
+              placeholder={'Search query'}
+          />
+           
           <TouchableOpacity
             style={styles.buttonBoard}
             onPress={this._onPress}
           >
-           <Text style={{color:'#FFFFFF'}}>GET DATA</Text>
+           <Text style={{color:'#FFFFFF'}}>GET Query</Text>
           </TouchableOpacity>
         {
           isLoading ?
@@ -39,12 +46,11 @@ class BoardList extends Component {
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
           :
-          loadSuccess?
           <View style={styles.containerFlatList}>
-            <FlatListCell />
+            <FlatListCell
+              listNews = {news}
+             />
           </View>
-          :
-          <View><Text></Text></View>
         }
       </ScrollView>
     )
@@ -54,14 +60,16 @@ class BoardList extends Component {
 const mapStateToProps = (state) =>{
   console.log("state",state)
   return{
-    isLoading: state.listBoardReducer.isLoading,
-    loadSuccess: state.listBoardReducer.loadSuccess
+    // isLoading: state.listBoardReducer.isLoading,
+    // loadSuccess: state.listBoardReducer.loadSuccess
+    news: state.listNews.news,
+    isLoading: state.listNews.loading,
+    message: state.listNews.message
   }
 }
 
 const mapDispatchToProps = {
-  loadList,
-  loadingNow
+  fetchNews
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardList);

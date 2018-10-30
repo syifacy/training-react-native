@@ -19,10 +19,10 @@ class FlatListCell extends Component{
     console.log(item);
     return(
       <TouchableOpacity style={styles.containerCell}>
-        <Image style={styles.image} source={item.image}/>
+        <Image style={styles.image} source={{uri:item.thumbnail[0]}}/>
         <View style={styles.containerText}>
           <Text>{item.title}</Text>
-          <Text>{item.desc}</Text>
+          <Text>{item.link}</Text>
         </View>
       </TouchableOpacity>
     )
@@ -30,7 +30,7 @@ class FlatListCell extends Component{
   render(){
     return(
       <FlatList
-        data={dataDummy.listDummy}
+        data={this.props.listNews}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
       />
