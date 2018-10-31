@@ -15,12 +15,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   buttonBoard:{
-    alignItems:'center',
     backgroundColor: '#887390',
     padding: 10,
-    marginLeft:40,
-    marginRight: 40,
-    marginTop:40,
     marginBottom: 50
   },
   image: {
@@ -55,8 +51,13 @@ const styles = StyleSheet.create({
   containerFlatList:{
     marginLeft: 10
   },
-  textStyle:{
-    backgroundColor:'red'
+  containerHeader:{
+    flex:1,
+    flexDirection: "column",
+    flexWrap:"nowrap",
+    alignContent:"center",
+    alignItems: "center",
+    marginTop: 10,
   }
   
 });

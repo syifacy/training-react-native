@@ -16,30 +16,41 @@ import {fetchNews} from '../../actions/NewsAction';
 class BoardList extends Component {
   constructor(props){
     super (props);
+    this.state ={
+      isDisabled: true,
+      valueSearch:''
+    }
   }
   
   _onPress = () =>{
-    this.props.fetchNews();
+    this.props.fetchNews(this.state.valueSearch);
   }
   _onChange = (value) =>{
     console.log("change", value)
+    if (value.length !== 0){
+      this.setState({isDisabled: false, valueSearch:value})
+    }
   }
   
-  render(){
+   render(){
     const {news, isLoading} = this.props;
+    const { isDisabled } =this.state;
       return(
         <ScrollView>
+        <View style={styles.containerHeader}>
           <TextInput
               onChangeText={this._onChange}
               placeholder='Search query'
-              style={styles.textStyle}
+
           />
           <TouchableOpacity
             style={styles.buttonBoard}
+            disabled={isDisabled}
             onPress={this._onPress}
           >
            <Text style={{color:'#FFFFFF'}}>GET Query</Text>
           </TouchableOpacity>
+        </View>
         {
           isLoading ?
           <View style={[styles.containerLoading, styles.horizontal]}>

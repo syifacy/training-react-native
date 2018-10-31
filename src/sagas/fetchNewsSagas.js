@@ -4,7 +4,7 @@ import fetchNewsAPI from '../api/news';
 export function* fetchNewsWorker(action) {
   console.log("action", action);
   try {
-    const result = yield call(fetchNewsAPI);
+    const result = yield call(fetchNewsAPI, action.params);
     yield put({type: 'FETCH_NEWS_SUCCESS', payload:result});
   } catch(error) {
     yield put({type: 'FETCH_NEWS_FAILURE'});

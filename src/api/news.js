@@ -1,6 +1,6 @@
 import axios from 'axios';
-export default async function fetchNewsAPI(){
-  return await axios.get('https://gapi.xyz/api/V1/?q=indonesia&max=6', null )
+export default async function fetchNewsAPI(params){
+  return await axios.get(`https://gapi.xyz/api/V1/?q=${params}&max=6`, null )
     .then((response) => {
       console.log("response call", response.data)
       return response.data
