@@ -31,9 +31,9 @@ class BoardList extends Component {
         <ScrollView>
           <TextInput
               onChangeText={this._onChange}
-              placeholder={'Search query'}
+              placeholder='Search query'
+              style={styles.textStyle}
           />
-           
           <TouchableOpacity
             style={styles.buttonBoard}
             onPress={this._onPress}

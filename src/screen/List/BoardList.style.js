@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
   },
   containerFlatList:{
     marginLeft: 10
+  },
+  textStyle:{
+    backgroundColor:'red'
   }
   
 });
