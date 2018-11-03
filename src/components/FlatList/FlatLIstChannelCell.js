@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {
+  TouchableOpacity,
+  Text,
   FlatList,
+  View
+  
 } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import WebViewComponent from '../WebView/WebViewComponent';
+import { Button, Divider, ListItem } from 'react-native-elements';
 
 class FlatListCell extends Component{
   constructor(props){
@@ -12,21 +15,20 @@ class FlatListCell extends Component{
 
     }
   }
+  
   _keyExtractor = (item, index) => index.toString();
   _renderItem = ({item, index}) =>{
     console.log("item #", item)
     return(
         <ListItem
           key={index}
-          title={item.title}
-          subtitle={item.description}
-          leftAvatar={{ rounded: true, source: item.urlToImage && { uri: item.urlToImage } }}
-          onPress={()=>
-           this.props.navigation.navigate('WebviewComponent',
-           {url:item.url,
-           title:item.title})
-          }
+          title={item.name}
+          leftIcon={{ name: 'insert-link' }}
+          onPress={()=> this.props.navigation.push('NewsDetail',{
+          title: item.name,
+        })}
         />
+     
     )
   }
   render(){
@@ -35,7 +37,6 @@ class FlatListCell extends Component{
         data={this.props.listNews}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
-
       />
     )
   }

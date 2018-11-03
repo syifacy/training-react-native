@@ -1,32 +1,63 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {
   View,
-  Text,
-  Image,
+  ActivityIndicator,
   ScrollView
 } from 'react-native';
+import FlatListCell from '../../components/FlatList/FlatListCell';
+import {fetchListNews} from '../../actions/NewsAction';
+import styles from './NewsFeedBoard.style';
+
 
 
 class NewsDetails extends Component {
-  static navigationOptions = {
-    title: 'News Detail'
-  }
+  static navigationOptions = ({ navigation }) => {
+    
+    return {
+      title: 'News From '+navigation.state.params.title,
+    };
+  };
   constructor(props){
     super(props);
+    
+  }
+  componentDidMount(){
+    const params = this.props.navigation.state.params.title;
+    this.props.fetchListNews(params);
   }
 
   render() {
-    const {title, link, image}=this.props.navigation.state.params;
+    const {isLoading, listFetchNews,navigation} = this.props;
     return(
       <ScrollView>
-        <View style={{flex:1, alignItems:'center'}}>
-          <Text style={{fontSize: 24, fontWeight:'bold', }}>{title}</Text>
+      {
+        isLoading?
+        <View style={[styles.containerLoading, styles.horizontal]}>
+            <ActivityIndicator size="large" color="#0000ff" />
         </View>
-        <Image style={{height:200,width:'100%', marginBottom:20}} source={{uri:image}}/>
-        <Text>You can see more at: {link}</Text>
+        :
+        <View style={styles.containerFlatList}>
+            <FlatListCell
+              listNews = {listFetchNews}
+              navigation={navigation}
+             />
+        </View>
+      }
       </ScrollView>
     )
   }
 }
+const mapStateToProps = (state) =>{
+  console.log("state",state)
+  return{
+    isLoading: state.listNews.isLoading,
+    listFetchNews: state.listNews.listNews,
+    message: state.listNews.message
+  }
+};
+const mapDispatchToProps = {
+  fetchListNews
+}
 
-export default NewsDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(NewsDetails);

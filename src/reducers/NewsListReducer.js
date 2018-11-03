@@ -11,11 +11,13 @@ const dataReducer = (currentState = initialState, action) =>{
         isLoading: true,
       }
     case 'FETCH_NEWS_LIST_SUCCESS':
+    console.log("FETCH NEWS LIST SUKSES #", action.payload);
     return{
       isLoading: false,
-      listNews: action.payload
+      listNews: action.payload.articles
     }
     case 'FETCH_NEWS_LIST_FAILURE':
+    console.log("FETCH NEWS LIST error #", action.payload);
     return{
       isLoading: false,
       message:{

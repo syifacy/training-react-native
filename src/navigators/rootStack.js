@@ -1,6 +1,8 @@
 import { createStackNavigator } from 'react-navigation';
 import NewsFeedBoard from '../screen/List/NewsFeedBoard';
 import NewsDetails from '../screen/List/NewsDetails';
+import WebviewComponent from '../components/WebView/WebViewComponent';
+
 
 const RootStack = createStackNavigator({
   Home:{
@@ -8,6 +10,9 @@ const RootStack = createStackNavigator({
   },
   NewsDetail:{
     screen: NewsDetails
+  },
+  WebviewComponent:{
+    screen: WebviewComponent
   }
 },{
   initialRouteName: 'Home',

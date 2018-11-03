@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
  
 } from 'react-native';
-import FlatListCell from '../../components/FlatList/FlatListCell';
+import FlatLIstChannelCell from '../../components/FlatList/FlatLIstChannelCell';
 import styles from './NewsFeedBoard.style';
 import {fetchChannelNews} from '../../actions/NewsAction';
 
@@ -20,24 +20,24 @@ class NewsFeedBoard extends Component {
     }
   }
   
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchChannelNews();
   }
   
    render(){
-    const {news, isLoading, navigation} = this.props;
+    const {newsChannel, isLoading, navigation} = this.props;
       return(
         <ScrollView>
         <View style={styles.containerHeader}>
         {
-          isLoading ?
+          isLoading ? 
           <View style={[styles.containerLoading, styles.horizontal]}>
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
           :
           <View style={styles.containerFlatList}>
-            <FlatListCell
-              listNews = {news}
+            <FlatLIstChannelCell
+              listNews = {newsChannel}
               navigation = {navigation}
              />
           </View>
@@ -49,11 +49,11 @@ class NewsFeedBoard extends Component {
 }
 
 const mapStateToProps = (state) =>{
-  console.log("state",state)
+  
   return{
-    news: state.listChannelNews.listChannelNews,
-    isLoading: state.listNews.isLoading,
-    message: state.listNews.message
+    newsChannel: state.listChannelNews.listChannelNews,
+    isLoading: state.listChannelNews.isLoading,
+    message: state.listChannelNews.message
   }
 }
 

@@ -15,14 +15,16 @@ const dataReducer = (currentState = initialState, action) =>{
       console.log("REDUCER NEWS CHANNEL # ", action.payload)
       return{
         isLoading: false,
-        listChannelNews: action.payload,
+        listChannelNews: action.payload.sources,
       }
     case 'FETCH_NEWS_CHANNEL_FAILURE':
+    console.log("REDUCER NEWS CHANNEL ERROR# ", action)
+
       return{
         isLoading: false,
         message:{
           title: 'Error occured news channel',
-          msg: action.error,
+          msg: action.payload.response,
         }
       }
     case 'RESET':

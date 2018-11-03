@@ -1,8 +1,10 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {fetchNewsAPI, fetchNewsListAPI} from '../api/news';
+import fetchNewsAPI from '../api/news';
+import fetchNewsListAPI from '../api/newsListAPI';
 
 export function* fetchNewsChannelWorker() {
   try {
+    console.log("FETCH NEWS CHANNEL WORKER");
     const result = yield call(fetchNewsAPI);
     yield put({type: 'FETCH_NEWS_CHANNEL_SUCCESS', payload:result});
   } catch(error) {

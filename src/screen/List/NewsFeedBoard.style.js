@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   containerFlatList:{
-    marginLeft: 10
+    // marginLeft: 10
+    
+    textAlign:'center',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   containerHeader:{
     flex:1,
-    flexDirection: "column",
-    flexWrap:"nowrap",
-    alignContent:"center",
-    alignItems: "center",
     marginTop: 10,
   }
   
