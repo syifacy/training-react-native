@@ -14,6 +14,9 @@ import {loadList, loadingNow} from '../../actions/ListBoardAction';
 import {fetchNews} from '../../actions/NewsAction';
 
 class BoardList extends Component {
+  static navigationOptions = {
+    title: 'News'
+  }
   constructor(props){
     super (props);
     this.state ={
@@ -33,7 +36,7 @@ class BoardList extends Component {
   }
   
    render(){
-    const {news, isLoading} = this.props;
+    const {news, isLoading, navigation} = this.props;
     const { isDisabled } =this.state;
       return(
         <ScrollView>
@@ -60,6 +63,7 @@ class BoardList extends Component {
           <View style={styles.containerFlatList}>
             <FlatListCell
               listNews = {news}
+              navigation = {navigation}
              />
           </View>
         }

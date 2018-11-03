@@ -12,13 +12,23 @@ import {dataDummy} from './Constants.FlatListCell';
 class FlatListCell extends Component{
   constructor(props){
     super(props);
-   
+    this.state = {
+
+    }
   }
+  
   _keyExtractor = (item, index) => index.toString();
   _renderItem = ({item, index}) =>{
-    console.log(item);
+    const {title, link, thumbnail} = item;
     return(
-      <TouchableOpacity style={styles.containerCell}>
+      <TouchableOpacity 
+        style={styles.containerCell}
+        onPress={()=> this.props.navigation.navigate('NewsDetail',{
+          title,
+          link,
+          image:thumbnail[0]
+        })}
+        >
         <Image style={styles.image} source={{uri:item.thumbnail[0]}}/>
         <View style={styles.containerText}>
           <Text>{item.title}</Text>
