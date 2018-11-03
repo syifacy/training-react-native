@@ -1,10 +1,10 @@
 import { createStackNavigator } from 'react-navigation';
-import News from '../screen/List/BoardList';
+import NewsFeedBoard from '../screen/List/NewsFeedBoard';
 import NewsDetails from '../screen/List/NewsDetails';
 
 const RootStack = createStackNavigator({
   Home:{
-    screen: News
+    screen: NewsFeedBoard
   },
   NewsDetail:{
     screen: NewsDetails
@@ -13,7 +13,7 @@ const RootStack = createStackNavigator({
   initialRouteName: 'Home',
   navigationOptions:{
     headerStyle:{
-      backgroundColor: '#ff8000'
+      backgroundColor: '#660033'
     },
     headerTintColor: '#fff',
     headerTitleStyle:{

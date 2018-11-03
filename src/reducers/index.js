@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import HomeReducer from './HomeReducer';
-import ListBoardReducer from './ListBoardReducer';
-import ListNews from './ListNews'
+
+import NewsChannelReducer from './NewsChannelReducer';
+import NewsListReducer from './NewsListReducer';
 
 module.exports = combineReducers({
-  homeReducer: HomeReducer,
-  listBoardReducer: ListBoardReducer,
-  listNews: ListNews
+  listChannelNews: NewsChannelReducer,
+  listNews: NewsListReducer
 });
