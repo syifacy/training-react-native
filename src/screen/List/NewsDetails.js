@@ -25,9 +25,6 @@ class NewsDetails extends Component {
     const params = this.props.navigation.state.params.title;
     this.props.fetchListNews(params);
   }
-  componentWillUnmount(){
-    this.props.reset();
-  }
   render() {
     const {isLoading, listFetchNews,navigation} = this.props;
     return(
