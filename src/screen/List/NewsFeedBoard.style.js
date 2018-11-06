@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
   },
   containerFlatList:{
     // marginLeft: 10
-    
     textAlign:'center',
     fontSize: 20,
     fontWeight: 'bold',

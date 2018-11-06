@@ -25,7 +25,7 @@ class FlatListCell extends Component{
           title={item.name}
           leftIcon={{ name: 'insert-link' }}
           onPress={()=> this.props.navigation.push('NewsDetail',{
-          title: item.name,
+            title: item.name,
         })}
         />
      
