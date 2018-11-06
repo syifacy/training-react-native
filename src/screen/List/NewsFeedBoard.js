@@ -18,7 +18,7 @@ class NewsFeedBoard extends Component {
     super (props);
    
   }
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchChannelNews();
   }
    render(){
