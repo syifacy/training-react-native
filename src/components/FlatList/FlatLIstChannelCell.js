@@ -1,22 +1,12 @@
 import React, {Component} from 'react';
 import {
-  TouchableOpacity,
-  Text,
   FlatList,
-  View
   
 } from 'react-native';
-import { Button, Divider, ListItem } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 
 class FlatListCell extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-
-    }
-  }
-  
-  _keyExtractor = (item, index) => index.toString();
+  _keyExtractor = (index) => index.toString();
   _renderItem = ({item, index}) =>{
     console.log("item #", item)
     return(

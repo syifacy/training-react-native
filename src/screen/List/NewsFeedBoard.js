@@ -16,14 +16,11 @@ class NewsFeedBoard extends Component {
   }
   constructor(props){
     super (props);
-    this.state ={
-    }
+   
   }
-  
   componentDidMount(){
     this.props.fetchChannelNews();
   }
-  
    render(){
     const {newsChannel, isLoading, navigation} = this.props;
       return(

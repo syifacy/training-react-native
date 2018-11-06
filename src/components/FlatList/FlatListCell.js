@@ -2,17 +2,10 @@ import React, {Component} from 'react';
 import {
   FlatList,
 } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
-import styles from '../../screen/List/NewsFeedBoard.style';
+import { ListItem } from 'react-native-elements';
 
 class FlatListCell extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-
-    }
-  }
-  _keyExtractor = (item, index) => index.toString();
+  _keyExtractor = (index) => index.toString();
   _renderItem = ({item, index}) =>{
     return(
         <ListItem

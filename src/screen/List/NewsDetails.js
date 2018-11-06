@@ -6,14 +6,13 @@ import {
   ScrollView
 } from 'react-native';
 import FlatListCell from '../../components/FlatList/FlatListCell';
-import {fetchListNews} from '../../actions/NewsAction';
+import {fetchListNews, reset} from '../../actions/NewsAction';
 import styles from './NewsFeedBoard.style';
 
 
 
 class NewsDetails extends Component {
   static navigationOptions = ({ navigation }) => {
-    
     return {
       title: 'News From '+navigation.state.params.title,
     };
@@ -26,7 +25,9 @@ class NewsDetails extends Component {
     const params = this.props.navigation.state.params.title;
     this.props.fetchListNews(params);
   }
-
+  componentWillUnmount(){
+    this.props.reset();
+  }
   render() {
     const {isLoading, listFetchNews,navigation} = this.props;
     return(
@@ -57,7 +58,8 @@ const mapStateToProps = (state) =>{
   }
 };
 const mapDispatchToProps = {
-  fetchListNews
+  fetchListNews,
+  reset
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsDetails);
